@@ -1,0 +1,182 @@
+﻿<Page x:Class="WPFTestChess.HomeWindow.HomeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFTestChess.HomeWindow" xmlns:local1="clr-namespace:WPFTestChess.GlobalMenu"
+      mc:Ignorable="d"
+        Title="HomeWindow" d:Height="450" d:Width="800" Loaded="Page_Loaded">
+    <Page.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Style.Setters>
+                <Setter Property="Margin" Value="10,10,10,10"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+
+                                <Border CornerRadius="10,10,10,10"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{Binding FirstBorderThickness}"
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Opacity="0.2">
+                                    <Border.Effect>
+                                        <BlurEffect Radius="10"/>
+                                    </Border.Effect>
+                                </Border>
+
+                                <Border BorderBrush="{Binding SecondBorderBrush}"
+                                        BorderThickness="{Binding SecondBorderThickness}"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        CornerRadius="10,10,10,10"
+                                        Margin="{Binding FirstBorderThickness}"
+                                        Background="{TemplateBinding Background}">
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="3*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="2*"/>
+                                            <RowDefinition Height="1.5*"/>
+                                        </Grid.RowDefinitions>
+                                        <Image Source="{Binding Image}"
+                                               Height="50"
+                                               Width="50"
+                                               Grid.Row="0"
+                                               Grid.RowSpan="2"
+                                               Grid.Column="0"/>
+
+                                        <Label Grid.Row="0"
+                                               Grid.Column="1"
+                                               Content="{Binding FirstLayerText}"
+                                               Foreground="{TemplateBinding Foreground}"
+                                               FontSize="35"
+                                               FontWeight="Bold"/>
+
+                                        <Label Grid.Row="1"
+                                               Grid.Column="1"
+                                               Content="{Binding SecondLayerText}"
+                                               Foreground="{TemplateBinding Foreground}"
+                                               FontSize="20"
+                                               VerticalAlignment="Top"/>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
+                <Setter Property="Background" Value="{Binding BackBrush}"/>
+                <Setter Property="BorderBrush" Value="{Binding FirstBorderBrush}"/>
+                <Setter Property="Foreground" Value="{Binding FirstTextBrush}"/>
+                <Setter Property="Command" Value="{Binding ClickCmd}"/>
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{Binding SelectedBackBrush}"/>
+                    <Setter Property="BorderBrush" Value="{Binding SelectedFirstBorderBrush}"/>
+                    <Setter Property="Foreground" Value="{Binding SelectedFirstTextBrush}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+
+
+    </Page.Resources>
+    <Grid Background="#312E2B">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.15*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Image Source="\Resources\Standartboard.png"
+               Name="Img"
+               Grid.Column="1"
+               VerticalAlignment="Top"
+               Margin="0,20,0,0"/>
+
+        <Grid Grid.Column="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Play Chess for Free on the #1 Program!"
+                       Grid.Row="0"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="4"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       FontSize="55"
+                       TextWrapping="Wrap"
+                       TextAlignment="Center"/>
+
+                <Label Content="1"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       Grid.Row="1"
+                       Grid.Column="0"
+                       HorizontalContentAlignment="Right"
+                       FontSize="20"/>
+
+                <Label Content="Games Today"
+                       Foreground="Gray"
+                       Grid.Row="1"
+                       Grid.Column="1"
+                       HorizontalContentAlignment="Left"
+                       FontSize="20"/>
+
+                <Label Content="+-0"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       Grid.Row="1"
+                       Grid.Column="2"
+                       HorizontalContentAlignment="Right"
+                       FontSize="20"/>
+
+                <Label Content="Playing Now"
+                       Foreground="Gray"
+                       Grid.Row="1"
+                       Grid.Column="3"
+                       HorizontalContentAlignment="Left"
+                       FontSize="20"/>
+            </Grid>
+
+            <Button Style="{StaticResource ButtonStyle}"
+                    DataContext="{Binding PlayButton}"
+                    Grid.Row="1"/>
+
+            <Button Style="{StaticResource ButtonStyle}"
+                    DataContext="{Binding ComputerButton}"
+                    Grid.Row="2"/>
+        </Grid>
+    </Grid>
+</Page>

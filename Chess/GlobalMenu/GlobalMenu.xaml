@@ -1,0 +1,272 @@
+﻿<UserControl x:Class="WPFTestChess.GlobalMenu.GlobalMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFTestChess.GlobalMenu"
+             mc:Ignorable="d" d:DesignWidth="180">
+    <UserControl.Resources>
+
+        <Style x:Key="MenuNormalItemStyle" TargetType="MenuItem">
+            <Style.Setters>
+                <Setter Property="Command" Value="{Binding FirstLayerMenyItem.OpenWindowCmd}"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="MenuItem">
+                            <Grid Background="{TemplateBinding Background}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="10"/>
+                                </Grid.RowDefinitions>
+                                
+                                <Image Source="{Binding FirstLayerMenyItem.Image.Source}"
+                                       Grid.Column="0"
+                                       Grid.Row="1"
+                                       Stretch="Fill"
+                                       Margin="5,5,5,5"/>
+                                
+                                <Label Content="{Binding FirstLayerMenyItem.Title}"
+                                       Grid.Column="1"
+                                       Grid.Row="1"
+                                       VerticalAlignment="Center"
+                                       Foreground="{TemplateBinding Foreground}"
+                                       FontWeight="Bold"
+                                       FontSize="20"
+                                       Margin="5,0,0,0"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style.Setters>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{Binding FirstLayerMenyItem.SelectedColor}"/>
+                    <Setter Property="Foreground" Value="{Binding FirstLayerMenyItem.SelectedTitleColor}"/>
+                </Trigger>
+
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter Property="Background" Value="{Binding FirstLayerMenyItem.Color}"/>
+                    <Setter Property="Foreground" Value="{Binding FirstLayerMenyItem.TitleColor}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="SecondLayerMenuItemStyle" TargetType="MenuItem">
+            <Style.Setters>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="MenuItem">
+                            <Grid Background="{TemplateBinding Background}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Image Source="{Binding Image.Source}"
+                                       Grid.Column="0"
+                                       Stretch="Fill"
+                                       Margin="5,5,5,5"/>
+                                <Label Content="{Binding Title}"
+                                       Grid.Column="1"
+                                       VerticalAlignment="Center"
+                                       Foreground="{TemplateBinding Foreground}"
+                                       FontWeight="Bold"
+                                       FontSize="15"
+                                       Margin="5,0,0,0"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style.Setters>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{Binding SelectedColor}"/>
+                    <Setter Property="Foreground" Value="{Binding SelectedTitleColor}"/>
+                </Trigger>
+
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter Property="Background" Value="{Binding Color}"/>
+                    <Setter Property="Foreground" Value="{Binding TitleColor}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="TopMenuItemStyle" TargetType="MenuItem">
+            <Style.Setters>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="MenuItem">
+                            <Grid Background="{TemplateBinding Background}">
+
+                                <Image Source="{Binding TopMenuImage.Image.Source}"
+                                       Stretch="Uniform"
+                                       Margin="5,5,7,5"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style.Setters>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{Binding TopMenuImage.SelectedColor}"/>
+                </Trigger>
+
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter Property="Background" Value="{Binding TopMenuImage.Color}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="Expander" TargetType="Expander">
+            <Style.Setters>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Expander">
+                            <Menu/>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsExpanded"
+                                         Value="True">
+                                    <Setter Property="Width"
+                                            Value="Auto" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style.Setters>
+        </Style>
+
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Style.Setters>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                                    CornerRadius="5"
+                                    Margin="20,10,20,10">
+                                <Label VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       FontSize="15"
+                                       FontWeight="Bold"
+                                       Foreground="{TemplateBinding Foreground}"
+                                       Content="{Binding FirstLayerText}"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
+                <Setter Property="Background" Value="{Binding BackBrush}"/>
+                <Setter Property="Foreground" Value="{Binding FirstTextBrush}"/>
+                <Setter Property="Command" Value="{Binding ClickCmd}"/>
+                
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{Binding SelectedBackBrush}"/>
+                    <Setter Property="Foreground" Value="{Binding SelectedFirstTextBrush}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+    </UserControl.Resources>
+    
+    <Grid Background="#272522">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
+
+        <MenuItem Style="{StaticResource TopMenuItemStyle}"
+                  Grid.Column="0"
+                  Grid.Row="0"
+                  VerticalAlignment="Top"
+                  Height="40"/>
+
+        <ItemsControl ItemsSource="{Binding MenuItems}"
+                      Grid.Column="0"
+                      Grid.Row="1"
+                      VerticalAlignment="Top">
+
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="1" Rows="7"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <MenuItem Style="{StaticResource MenuNormalItemStyle}"
+                                  Width="200"
+                                  Height="60"/>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <Button Style="{StaticResource ButtonStyle}"
+                DataContext="{Binding SignUpButton}"
+                Grid.Row="2"/>
+
+        <Button Style="{StaticResource ButtonStyle}"
+                DataContext="{Binding LogInButton}"
+                Grid.Row="3"/>
+        <!--
+        <DockPanel LastChildFill="True"
+                   Grid.Column="1"
+                   Grid.Row="0"
+                   Grid.RowSpan="2">
+            <Grid DockPanel.Dock="Left">
+                <Expander 
+                      Style="{StaticResources Expander}"
+                      IsExpanded="{Binding IsExpanded}">
+                    <ItemsControl ItemsSource="{Binding ExMenuItems}"
+                      Grid.Column="0"
+                      Name="MenuExpander"
+                      Grid.Row="1"
+                      Height="280"
+                      VerticalAlignment="Top">
+
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="1" Rows="{Binding Count}"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <MenuItem Style="{StaticResources SecondLayerMenuItemStyle}"
+                                     Width="180"
+                                     Height="40">
+                                    </MenuItem>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                </Expander>
+            </Grid>
+            <Border Name="NonSliding"
+                Width="100"
+                Height="50"
+                Background="Green">
+
+            </Border>
+        </DockPanel>!-->
+
+    </Grid>
+</UserControl>

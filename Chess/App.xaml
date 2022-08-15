@@ -1,0 +1,156 @@
+﻿<Application x:Class="Chess.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Chess"
+             StartupUri="GeneralWindow.xaml">
+    <Application.Resources>
+        <Style x:Key="ShowPassword" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}" Margin="5,5,5,5">
+                            <Image Source="Resources\ShowPasswordImg.png"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Command" Value="{Binding ClickCmd}"/>
+            <Style.Triggers>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="TextBoxStyle" TargetType="TextBox">
+            <Style.Setters>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    CornerRadius="5"
+                                    BorderThickness="1">
+                                <Grid Height="30">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="10*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Column="0"
+                                       Source="{Binding FirstImg}"
+                                       Margin="2,2,2,2"/>
+
+                                    <TextBox Grid.Column="1"
+                                             Text="{Binding Text,Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
+                                             BorderThickness="0"
+                                             Foreground="LightGray"
+                                             VerticalContentAlignment="Center"
+                                             Background="{TemplateBinding Background}"/>
+
+                                    <Label Grid.Column="1"
+                                           Content="{TemplateBinding Text}"
+                                           Foreground="Gray"
+                                           IsHitTestVisible="False"
+                                           Margin="0,3,0,0"/>
+
+                                    <Image Grid.Column="2"
+                                       Source="{TemplateBinding Tag}"
+                                       Margin="2,2,2,2"/>
+                                </Grid>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
+                <Setter Property="Text" Value="{Binding Watermark}"/>
+                <Setter Property="Background" Value="#3C3A38"/>
+                <Setter Property="BorderBrush" Value="#504E4C"/>
+            </Style.Setters>
+
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsAnyText}" Value="True">
+                    <Setter Property="Text" Value=""/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Incorrect}" Value="True">
+                    <Setter Property="BorderBrush" Value="#B33430"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Correct}" Value="True">
+                    <Setter Property="Tag" Value="{Binding SecondImg}"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Style.Setters>
+                <Setter Property="Content" Value="{Binding ErrorText}"/>
+                <Setter Property="Foreground" Value="#B33430"/>
+                <Setter Property="Visibility" Value="Hidden"/>
+            </Style.Setters>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Incorrect}" Value="True">
+                    <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="SignLogStyleButton" TargetType="Button">
+            <Style.Setters>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+
+                                <Border CornerRadius="10,10,10,10"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{Binding FirstBorderThickness}"
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Opacity="0.2">
+                                    <Border.Effect>
+                                        <BlurEffect Radius="10"/>
+                                    </Border.Effect>
+                                </Border>
+
+                                <Border BorderBrush="{Binding SecondBorderBrush}"
+                                        BorderThickness="{Binding SecondBorderThickness}"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        CornerRadius="10,10,10,10"
+                                        Margin="{Binding FirstBorderThickness}"
+                                        Background="{TemplateBinding Background}">
+
+                                    <Label Content="{Binding FirstLayerText}"
+                                           Foreground="White"
+                                           FontWeight="Bold"
+                                           FontSize="35"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           HorizontalContentAlignment="Center"
+                                           VerticalContentAlignment="Center"/>
+                                </Border>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Background" Value="{Binding BackBrush}"/>
+                <Setter Property="BorderBrush" Value="{Binding FirstBorderBrush}"/>
+                <Setter Property="Foreground" Value="{Binding FirstTextBrush}"/>
+                <Setter Property="Command" Value="{Binding ClickCmd}"/>
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{Binding SelectedBackBrush}"/>
+                    <Setter Property="BorderBrush" Value="{Binding SelectedFirstBorderBrush}"/>
+                    <Setter Property="Foreground" Value="{Binding SelectedFirstTextBrush}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Application.Resources>
+</Application>

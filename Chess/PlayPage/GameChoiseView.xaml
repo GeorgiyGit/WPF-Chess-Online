@@ -1,0 +1,190 @@
+﻿<Page x:Class="WPFTestChess.PlayPage.GameChoiseView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPFTestChess.PlayPage.ViewModels"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="GameChoiseView" Loaded="Page_Loaded">
+    <Page.Resources>
+        <Style x:Key="MenuItemStyle" TargetType="Button">
+            <Style.Setters>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Border CornerRadius="5"
+                                        Background="{TemplateBinding Background}"
+                                        BorderBrush="{Binding FirstBorderBrush}"
+                                        BorderThickness="{Binding FirstBorderThickness}">
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="4*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="2*"/>
+                                            <RowDefinition Height="1.5*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Image Grid.Row="0"
+                                               Grid.RowSpan="2"
+                                               Grid.Column="0"
+                                               Source="{Binding Image}"
+                                               Margin="10"/>
+
+                                        <Label Grid.Column="1"
+                                               Grid.Row="0"
+                                               Content="{Binding FirstLayerText}"
+                                               Foreground="{Binding FirstTextBrush}"
+                                               FontSize="35"
+                                               FontWeight="Bold"/>
+
+                                        <Label Grid.Row="1"
+                                               Grid.Column="1"
+                                               Content="{Binding SecondLayerText}"
+                                               Foreground="{Binding SecondTextBrush}"
+                                               FontSize="20"
+                                               VerticalAlignment="Top"/>
+
+                                    </Grid>
+
+                                </Border>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Background" Value="{Binding BackBrush}"/>
+                <Setter Property="Content" Value="{Binding FirstLayerText}"/>
+                <Setter Property="ContentStringFormat" Value="{Binding SecondLayerText}"/>
+                <Setter Property="Command" Value="{Binding ClickCmd}"/>
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{Binding SelectedBackBrush}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+
+
+    <Grid Background="#312E2B">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Margin="15,0,15,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.75*"/>
+                <RowDefinition Height="8*"/>
+                <RowDefinition Height="0.75*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" VerticalAlignment="Bottom" Margin="0,0,0,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="7*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Image Source="PlayPageResources\OpponentImage.png"
+                       Grid.Row="0"
+                       Grid.RowSpan="2"
+                       Grid.Column="0"/>
+
+                <Label Content="Opponent"
+                       Foreground="LightGray"
+                       Grid.Column="1"
+                       Grid.Row="0"
+                       HorizontalContentAlignment="Left"
+                       HorizontalAlignment="Left"
+                       FontWeight="Bold"/>
+            </Grid>
+
+            <Image Source="PlayPageResources\Standartboard.png"
+                   Grid.Row="1"
+                   x:Name="img" DockPanel.Dock="Top"
+                   HorizontalAlignment="Left"/>
+
+            <Grid Grid.Row="2" VerticalAlignment="Top" Margin="0,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="9*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Source="PlayPageResources\UserImage.png"
+                       Grid.Column="0"/>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Column="1" Margin="0,0,15,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Rectangle
+                   Fill="#272522"
+                   RadiusX="15"
+                   RadiusY="15"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Grid.Row="0"
+                   Grid.RowSpan="5"
+                   Margin="0,10,0,10"/>
+
+            <Label Content="Play Chess"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Grid.Row="0"
+                   HorizontalAlignment="Center"
+                   FontSize="40"
+                   FontWeight="Bold"
+                   Foreground="White"/>
+
+            <Image Source="PlayPageResources\PlayChessImg.png"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   HorizontalAlignment="Center"
+                   Height="100"
+                   Width="100"
+                   Margin="0,10,0,10"/>
+
+            <ItemsControl ItemsSource="{Binding PlayMenu}"
+                          Grid.Column="0"
+                          Grid.ColumnSpan="2"
+                          Grid.Row="2">
+
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="1" Rows="5"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Button Style="{StaticResource MenuItemStyle}"
+                                    Margin="20,2,20,2"
+                                    Height="100"/>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+    </Grid>
+</Page>

@@ -1,0 +1,190 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="PlayPage\PlayPageResources\OpponentImage.png" />
+    <None Remove="PlayPage\PlayPageResources\PlayChessImg.png" />
+    <None Remove="PlayPage\PlayPageResources\PlayComputerImg.png" />
+    <None Remove="PlayPage\PlayPageResources\PlayFriendImg.png" />
+    <None Remove="PlayPage\PlayPageResources\PlayOnlineImg.png" />
+    <None Remove="PlayPage\PlayPageResources\Standartboard.png" />
+    <None Remove="PlayPage\PlayPageResources\TournamentImg.png" />
+    <None Remove="PlayPage\PlayPageResources\UserImage.png" />
+    <None Remove="PlayPage\PlayPageResources\VariantsImg.png" />
+    <None Remove="PlayPage\Resources\Pieces\Black\Bishop.png" />
+    <None Remove="PlayPage\Resources\Pieces\Black\King.png" />
+    <None Remove="PlayPage\Resources\Pieces\Black\Knight.png" />
+    <None Remove="PlayPage\Resources\Pieces\Black\Pawn.png" />
+    <None Remove="PlayPage\Resources\Pieces\Black\Queen.png" />
+    <None Remove="PlayPage\Resources\Pieces\Black\Rook.png" />
+    <None Remove="PlayPage\Resources\Pieces\White\Bishop.png" />
+    <None Remove="PlayPage\Resources\Pieces\White\King.png" />
+    <None Remove="PlayPage\Resources\Pieces\White\Knight.png" />
+    <None Remove="PlayPage\Resources\Pieces\White\Pawn.png" />
+    <None Remove="PlayPage\Resources\Pieces\White\Queen.png" />
+    <None Remove="PlayPage\Resources\Pieces\White\Rook.png" />
+    <None Remove="Resources\Correct.png" />
+    <None Remove="Resources\EmailImg.png" />
+    <None Remove="Resources\Menu\LearnImg.png" />
+    <None Remove="Resources\Menu\MoreMenu\LibraryImg.png" />
+    <None Remove="Resources\Menu\MoreMenu\MoreImg.png" />
+    <None Remove="Resources\Menu\NewsImg.png" />
+    <None Remove="Resources\Menu\PazzlesImg.png" />
+    <None Remove="Resources\Menu\PlayImg.png" />
+    <None Remove="Resources\Menu\PlayMenu\ComputerImg.png" />
+    <None Remove="Resources\Menu\PlayMenu\LeaderboardImg.png" />
+    <None Remove="Resources\Menu\PlayMenu\PlayImg.png" />
+    <None Remove="Resources\Menu\SocialMenu\ForumImg.png" />
+    <None Remove="Resources\Menu\SocialMenu\SocialImg.png" />
+    <None Remove="Resources\Menu\TopMenuImg.png" />
+    <None Remove="Resources\Menu\WatchImg.png" />
+    <None Remove="Resources\PasswordImg.png" />
+    <None Remove="Resources\Pieces\Black\Bishop.png" />
+    <None Remove="Resources\Pieces\Black\King.png" />
+    <None Remove="Resources\Pieces\Black\Knight.png" />
+    <None Remove="Resources\Pieces\Black\Pawn.png" />
+    <None Remove="Resources\Pieces\Black\Queen.png" />
+    <None Remove="Resources\Pieces\Black\Rook.png" />
+    <None Remove="Resources\Pieces\White\Bishop.png" />
+    <None Remove="Resources\Pieces\White\King.png" />
+    <None Remove="Resources\Pieces\White\Knight.png" />
+    <None Remove="Resources\Pieces\White\Pawn.png" />
+    <None Remove="Resources\Pieces\White\Queen.png" />
+    <None Remove="Resources\Pieces\White\Rook.png" />
+    <None Remove="Resources\ShowPasswordImg.png" />
+    <None Remove="Resources\SignUpBack.png" />
+    <None Remove="Resources\Standartboard.png" />
+    <None Remove="Resources\UsernameImg.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Menu\PlayMenu\ComputerImg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Db\Db.csproj" />
+    <ProjectReference Include="..\Library\Library.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="PlayPage\PlayPageResources\OpponentImage.png" />
+    <Resource Include="PlayPage\PlayPageResources\PlayChessImg.png" />
+    <Resource Include="PlayPage\PlayPageResources\PlayComputerImg.png" />
+    <Resource Include="PlayPage\PlayPageResources\PlayFriendImg.png" />
+    <Resource Include="PlayPage\PlayPageResources\PlayOnlineImg.png" />
+    <Resource Include="PlayPage\PlayPageResources\Standartboard.png" />
+    <Resource Include="PlayPage\PlayPageResources\TournamentImg.png" />
+    <Resource Include="PlayPage\PlayPageResources\UserImage.png" />
+    <Resource Include="PlayPage\PlayPageResources\VariantsImg.png" />
+    <Resource Include="PlayPage\Resources\Pieces\Black\Bishop.png" />
+    <Resource Include="PlayPage\Resources\Pieces\Black\King.png" />
+    <Resource Include="PlayPage\Resources\Pieces\Black\Knight.png" />
+    <Resource Include="PlayPage\Resources\Pieces\Black\Pawn.png" />
+    <Resource Include="PlayPage\Resources\Pieces\Black\Queen.png" />
+    <Resource Include="PlayPage\Resources\Pieces\Black\Rook.png" />
+    <Resource Include="PlayPage\Resources\Pieces\White\Bishop.png" />
+    <Resource Include="PlayPage\Resources\Pieces\White\King.png" />
+    <Resource Include="PlayPage\Resources\Pieces\White\Knight.png" />
+    <Resource Include="PlayPage\Resources\Pieces\White\Pawn.png" />
+    <Resource Include="PlayPage\Resources\Pieces\White\Queen.png" />
+    <Resource Include="PlayPage\Resources\Pieces\White\Rook.png" />
+    <Resource Include="Resources\Correct.png" />
+    <Resource Include="Resources\EmailImg.png" />
+    <Resource Include="Resources\Menu\LearnImg.png" />
+    <Resource Include="Resources\Menu\MoreMenu\LibraryImg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Menu\MoreMenu\MoreImg.png" />
+    <Resource Include="Resources\Menu\NewsImg.png" />
+    <Resource Include="Resources\Menu\PazzlesImg.png" />
+    <Resource Include="Resources\Menu\PlayImg.png" />
+    <Resource Include="Resources\Menu\PlayMenu\LeaderboardImg.png" />
+    <Resource Include="Resources\Menu\PlayMenu\PlayImg.png" />
+    <Resource Include="Resources\Menu\SocialMenu\ForumImg.png" />
+    <Resource Include="Resources\Menu\SocialMenu\SocialImg.png" />
+    <Resource Include="Resources\Menu\TopMenuImg.png" />
+    <Resource Include="Resources\Menu\WatchImg.png" />
+    <Resource Include="Resources\PasswordImg.png" />
+    <Resource Include="Resources\Pieces\Black\Bishop.png" />
+    <Resource Include="Resources\Pieces\Black\King.png" />
+    <Resource Include="Resources\Pieces\Black\Knight.png" />
+    <Resource Include="Resources\Pieces\Black\Pawn.png" />
+    <Resource Include="Resources\Pieces\Black\Queen.png" />
+    <Resource Include="Resources\Pieces\Black\Rook.png" />
+    <Resource Include="Resources\Pieces\White\Bishop.png" />
+    <Resource Include="Resources\Pieces\White\King.png" />
+    <Resource Include="Resources\Pieces\White\Knight.png" />
+    <Resource Include="Resources\Pieces\White\Pawn.png" />
+    <Resource Include="Resources\Pieces\White\Queen.png" />
+    <Resource Include="Resources\Pieces\White\Rook.png" />
+    <Resource Include="Resources\ShowPasswordImg.png" />
+    <Resource Include="Resources\SignUpBack.png" />
+    <Resource Include="Resources\Standartboard.png" />
+    <Resource Include="Resources\UsernameImg.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="MainWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="PlayPage\PieceSelection.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="GeneralWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GlobalMenu\GlobalMenu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="HomeWindow\HomeWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="LogIn.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="PlayPage\ChessboardView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="PlayPage\GameChoiseView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="PlayPage\GameOverView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="PlayPage\Games\PlayBotView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="PlayPage\Games\PlayOnlineView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="PlayPage\PieceSelection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Update="PlayPage\PlayerInfo.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SignUp.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+</Project>
